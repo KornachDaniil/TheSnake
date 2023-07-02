@@ -3,8 +3,8 @@
 using namespace std;
 
 bool gameOver;
-const int widthMap = 30;
-const int heightMap = 15;
+const int widthMap = 20;
+const int heightMap = 10;
 float snakeX, snakeY;
 float fruitX, fruitY;
 float gameAccount;
@@ -23,12 +23,12 @@ void Setup() {
 
 void DrawMap() {
 	system("cls");
-	for (float i = 0; i < widthMap + 1; i++) {
+	for (float i = 0; i < widthMap; i = i + 0.5) {
 		cout << "#";
 	}
 	cout << endl;
-	for (float j = 0; j < heightMap; j++) {
-		for (float i = 0; i < widthMap; i++) {
+	for (float j = 0; j < heightMap; j = j + 0.5) {
+		for (float i = 0; i < widthMap; i = i + 0.5) {
 			if (i == 0 || i == (widthMap - 1)) {
 				cout << "#";
 			}
@@ -45,7 +45,7 @@ void DrawMap() {
 		cout << endl;
 	}
 
-	for (float i = 0; i < widthMap + 1; i = i++) {
+	for (float i = 0; i < widthMap; i = i = i + 0.5) {
 		cout << "#";
 	}
 	cout << endl;
