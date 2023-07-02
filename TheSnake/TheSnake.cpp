@@ -54,7 +54,16 @@ void DrawMap() {
 		cout << "#";
 	}
 	cout << endl;
-	cout << "Score: " << gameAccount;
+	// Счет и описание клавиш:
+	cout << "Score: " << gameAccount << "/30";
+	for (int i = 0; i < 4; i++) {
+		cout << ' ';
+	}
+	cout << "Movement: WASD";
+	for (int i = 0; i < 4; i++) {
+		cout << ' ';
+	}
+	cout << "To exit press: X";
 }
 
 
@@ -124,8 +133,17 @@ void GameLogic() {
 		fruitY = rand() % (heightMap - 1);
 		gameAccount++;
 	}
-}
 
+	// Условия игры:
+	if (gameAccount == 15) {
+		char textWin[] = "Y O U  A R E  W I N ! ! !";
+		gameOver = true;
+		cout << endl << endl << endl;
+		cout << textWin;
+		cout << endl << endl << endl;
+		system("pause");
+	}
+}
 
 int main() {
 	Setup();
