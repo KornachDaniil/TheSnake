@@ -22,29 +22,34 @@ void Setup() {
 }
 
 void DrawMap() {
+	// Отрисовка всех объектов на карте:
 	system("cls");
+	// Верхняя граница карты
 	for (int i = 0; i < (widthMap + 1); i++) {
 		cout << "#";
 	}
 	cout << endl;
+
+	// Отрисовка высоты и пустого пространства, а также объектов указанных ниже. 
 	for (int j = 0; j < heightMap; j++) {
 		for (int i = 0; i < widthMap; i++) {
 			if (i == 0 || i == (widthMap - 1)) {
 				cout << "#";
 			}
 			if (snakeX == i && snakeY == j) {
-				cout << "0";
+				cout << "0"; //Отрисовка головы змейки
 			}
 			else if (fruitX == i && fruitY == j) {
-				cout << "$";
+				cout << "$"; // Отрисовка цели
 			}
 			else {
-				cout << " ";
+				cout << " "; // Отрисовка пустого пространства
 			}
 		}
 		cout << endl;
 	}
 
+	// Нижняя граница карты 
 	for (int i = 0; i < (widthMap + 1); i = i++) {
 		cout << "#";
 	}
@@ -55,6 +60,8 @@ void DrawMap() {
 
 
 void MovementInput() {
+
+	// Клавиши по умолчанию:
 	if (_kbhit()) {
 		switch (_getch()) {
 		case 'a':
@@ -79,6 +86,8 @@ void MovementInput() {
 }
 
 void GameLogic() {
+
+	// Скорость персонажа: 
 	switch (directionSnake)
 	{
 	case UP:
@@ -94,9 +103,22 @@ void GameLogic() {
 		snakeX--;
 		break;
 	}
-	if (snakeX > widthMap || snakeX < 0 || snakeY > heightMap || snakeY < 0) {
-		gameOver = true;
+
+	// Телепортирующие границы карты:
+	if (snakeX > widthMap) {
+		snakeX = 0;
 	}
+	else if (snakeX < 0) {
+		snakeX = widthMap;
+	}
+	else if (snakeY > heightMap) {
+		snakeY = 0;
+	}
+	else if (snakeY < 0) {
+		snakeY = heightMap;
+	}
+
+	// Спавн новых целей:
 	if (snakeX == fruitX && snakeY == fruitY) {
 		fruitX = rand() % (widthMap - 1);
 		fruitY = rand() % (heightMap - 1);
