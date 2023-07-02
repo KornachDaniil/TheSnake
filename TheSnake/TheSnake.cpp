@@ -55,7 +55,7 @@ void DrawMap() {
 	}
 	cout << endl;
 	// Счет и описание клавиш:
-	cout << "Score: " << gameAccount << "/30";
+	cout << "Score: " << gameAccount << "/15";
 	for (int i = 0; i < 4; i++) {
 		cout << ' ';
 	}
