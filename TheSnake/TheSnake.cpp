@@ -3,11 +3,11 @@
 using namespace std;
 
 bool gameOver;
-const int widthMap = 20;
-const int heightMap = 10;
-float snakeX, snakeY;
-float fruitX, fruitY;
-float gameAccount;
+const int widthMap = 30;
+const int heightMap = 15;
+int snakeX, snakeY;
+int fruitX, fruitY;
+int gameAccount;
 enum eDirection { STOP = 0, UP, DOWN, RIGHT, LEFT };
 eDirection directionSnake;
 
@@ -23,12 +23,12 @@ void Setup() {
 
 void DrawMap() {
 	system("cls");
-	for (float i = 0; i < widthMap; i = i + 0.5) {
+	for (int i = 0; i < (widthMap + 1); i++) {
 		cout << "#";
 	}
 	cout << endl;
-	for (float j = 0; j < heightMap; j = j + 0.5) {
-		for (float i = 0; i < widthMap; i = i + 0.5) {
+	for (int j = 0; j < heightMap; j++) {
+		for (int i = 0; i < widthMap; i++) {
 			if (i == 0 || i == (widthMap - 1)) {
 				cout << "#";
 			}
@@ -45,7 +45,7 @@ void DrawMap() {
 		cout << endl;
 	}
 
-	for (float i = 0; i < widthMap; i = i = i + 0.5) {
+	for (int i = 0; i < (widthMap + 1); i = i++) {
 		cout << "#";
 	}
 	cout << endl;
@@ -82,16 +82,16 @@ void GameLogic() {
 	switch (directionSnake)
 	{
 	case UP:
-		snakeY -= 0.5;
+		snakeY--;
 		break;
 	case DOWN:
-		snakeY += 0.5;
+		snakeY++;
 		break;
 	case RIGHT:
-		snakeX += 0.5;
+		snakeX++;
 		break;
 	case LEFT:
-		snakeX -= 0.5;
+		snakeX--;
 		break;
 	}
 	if (snakeX > widthMap || snakeX < 0 || snakeY > heightMap || snakeY < 0) {
