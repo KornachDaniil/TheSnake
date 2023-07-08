@@ -6,6 +6,7 @@ bool gameOver;
 const int widthMap = 30;
 const int heightMap = 15;
 int snakeX, snakeY;
+int snakeTailX, snakeTailY;
 int fruitX, fruitY;
 int gameAccount;
 enum eDirection { STOP = 0, UP, DOWN, RIGHT, LEFT };
@@ -37,7 +38,7 @@ void DrawMap() {
 				cout << "#";
 			}
 			if (snakeX == i && snakeY == j) {
-				cout << "0"; //Отрисовка головы змейки
+				cout << "O"; //Отрисовка головы змейки
 			}
 			else if (fruitX == i && fruitY == j) {
 				cout << "$"; // Отрисовка цели
@@ -133,6 +134,7 @@ void GameLogic() {
 		fruitY = rand() % (heightMap - 1);
 		gameAccount++;
 	}
+	
 
 	// Условия игры:
 	if (gameAccount == 15) {
